@@ -20,7 +20,7 @@ app.use(cors({
 app.use(express.json()); //to convert request data to json
 
 app.get("/", (req, res) => {
-  res.send("Hello 👋 I am Working Fine 🚀")
+  res.send("Hello 👋 GradeHub v1.1.0 is Running 🚀");
 })
 
 app.use('/media', express.static(path.join(__dirname, 'media')));
