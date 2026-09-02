@@ -1,0 +1,36 @@
+name: GradeHub CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/digital-assessments-evaluation-platform
+            git pull origin main
+            cd backend
+
+            sudo docker stop gradehub-backend || true
+            sudo docker rm gradehub-backend || true
+
+            sudo docker build -t gradehub-backend:latest .
+
+            sudo docker run -d \
+              --name gradehub-backend \
+              --env-file .env \
+              -p 5000:5000 \
+              gradehub-backend:latest
+
+            sudo docker ps
+            sudo docker logs --tail 20 gradehub-backend
