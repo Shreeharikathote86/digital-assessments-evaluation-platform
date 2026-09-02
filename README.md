@@ -124,3 +124,7 @@ The system includes a comprehensive digital assessment and evaluation platform w
 - [My Website](http://krishjotaniya.netlify.app/)
 - [Linkedin](https://www.linkedin.com/in/krishjotaniya/)
 - [krishjotaniya71@gmail.com](mailto:krishjotaniya71@gmail.com)
+
+## DevOps Project
+
+This project demonstrates Git, GitHub, Docker, CI/CD, automated testing, deployment, environment variables, monitoring, releases, and rollback.
