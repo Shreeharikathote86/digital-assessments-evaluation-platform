@@ -1,7 +1,7 @@
 // Load environment variables first
 require('dotenv').config();
 
-const connectToMongo = require("./database/db");
+const connectToMongo = require("./Database/db");
 const express = require("express");
 const app = express();
 const path = require("path");
